@@ -23,7 +23,7 @@ var inGame = true;
 const DOT_SIZE = 10;
 const ALL_DOTS = 900;
 const MAX_RAND = 29;
-const DELAY = 140;
+const DELAY = 90;
 const C_HEIGHT = 300;
 const C_WIDTH = 300;    
 
@@ -178,6 +178,10 @@ function locateApple() {
     apple_y = r * DOT_SIZE;
 }    
 
+function updateScore(){
+    document.getElementById("score").innerHTML = "Your current Score : " + (dots - 3);
+}
+
 function gameCycle() {
     
     if (inGame) {
@@ -186,6 +190,7 @@ function gameCycle() {
         checkCollision();
         move();
         doDrawing();
+        updateScore();
         setTimeout("gameCycle()", DELAY);
     }
 }
